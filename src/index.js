@@ -8,6 +8,35 @@ const todoInput = document.querySelector("#todoInput");
 const todoList = document.querySelector("#todoList");
 const clearButton = document.querySelector("#clearBtn");
 
+const getList = function (todoItems) {
+    todoList.innerHTML = "";
+    if (todoItems.length > 0) {
+      todoItems.forEach((todo) => {
+        const iconClass = todo.isDone
+          ? "bi-check-square-fill"
+          : "bi-check-square";
+        todoList.insertAdjacentHTML(
+          "beforeend",
+          `<li class="list-group-item d-flex justify-content-between align-items-center">
+          <span>
+                <a href="#" data-done><i class="bi ${iconClass} green"></i></a>
+          </span>
+            <span class="title" data-time="${todo.addedAt}">${todo.name}</span> 
+           
+          </li>`
+        );
+        
+      });
+    } else {
+      itemList.insertAdjacentHTML(
+        "beforeend",
+        `<li class="list-group-item d-flex justify-content-between align-items-center">
+          No record found.
+        </li>`
+      );
+    }
+  };
+
 document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
 
