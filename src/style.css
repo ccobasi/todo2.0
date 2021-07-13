@@ -7,3 +7,16 @@ body {
     color: red;
    
 }
+
+.green {
+    color:lightgreen;
+}
+.red {
+    color:lightcoral;
+}
+.blue {
+    color:skyblue
+}
+#todoList { font-size: 1.5rem;}
+.show { display: block;}
+.hide { display: none;}
