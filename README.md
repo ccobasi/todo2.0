@@ -20,7 +20,7 @@ To see a live demo of this project please follow the next section "getting start
 
 ## Getting Started
 
-To get a local copy of this program up and running on your local machine follow this sections.
+To get a local copy of this program up and running on your local machine follow this steps.
 
 ### Prerequisites
 
