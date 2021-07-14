@@ -1,66 +1,34 @@
-import _ from 'lodash';
 import './style.css';
 
-let todoList = [];
+const list = [
+  {
+    index: 1,
+    description: 'Do laundry',
+    completed: true,
+  },
+  {
+    index: 2,
+    description: 'Do laundry',
+    completed: false,
+  },
 
-const form = document.querySelector("#todoForm");
-const todoInput = document.querySelector("#todoInput");
-const todoList = document.querySelector("#todoList");
-const clearButton = document.querySelector("#clearBtn");
+];
 
-const getList = function (todoItems) {
-    todoList.innerHTML = "";
-    if (todoItems.length > 0) {
-      todoItems.forEach((todo) => {
-        const iconClass = todo.isDone
-          ? "bi-check-square-fill"
-          : "bi-check-square";
-        todoList.insertAdjacentHTML(
-          "beforeend",
-          `<li class="list-group-item d-flex justify-content-between align-items-center">
-          <span>
-                <a href="#" data-done><i class="bi ${iconClass} green"></i></a>
-          </span>
-            <span class="title" data-time="${todo.addedAt}">${todo.name}</span> 
-           
-          </li>`
-        );
-        
-      });
-    } else {
-      itemList.insertAdjacentHTML(
-        "beforeend",
-        `<li class="list-group-item d-flex justify-content-between align-items-center">
-          No record found.
-        </li>`
-      );
-    }
-  };
+const todoList = document.querySelector('.todoList');
 
-document.addEventListener("DOMContentLoaded", () => {
-    form.addEventListener("submit", (e) => {
+const displayList = (list) => {
+  list.forEach((e) => {
+    const lists = document.createElement('div');
+    lists.innerHTML = `
+    
+      <div class="mini-section item">
+      <input class="check" type="checkbox" id="todo-description" name="todo-description" value="${e.index}">${e.description}
+      <i class="fas fa-ellipsis-v" style="color: gray; float: right;"></i>
+      </div>
+      `;
 
-      e.preventDefault();
+    todoList.appendChild(lists);
+  });
+};
 
-      const todo = todoInput.value.trim();
-      if (todo.length === 0) {
-        showAlert("Add to your list...", "alert-danger");
-        return;
-      } else {
-          // Add new Item
-          const itemObj = {
-            name: todo
-          };
-          todoItems.push(itemObj);
-          // set local storage
-          setLocalStorage(todoItems);
-          showAlert("New item has been added.", "alert-success");
-        }
-  
-        getList(todoItems);
-        // get list of all items
-      }
-      console.log(todoItems);
-      todoInput.value = "";
-    });
-  
+displayList(list);

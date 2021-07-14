@@ -1,22 +1,59 @@
 
 body {
-    background-color: bisque;
+  background-color: bisque;
 }
 
 .hello {
-    color: red;
-   
+  color: red;
+}
+
+i {
+  color: gray;
+}
+
+.mini-section {
+  border-bottom: 1px solid rgb(224, 224, 224);
+  margin: 0;
+  padding: 10px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo {
+  border: none;
+  font-style: italic;
+  width: 90%;
+  padding: 8px;
+}
+
+.todo:focus {
+  outline: none;
+}
+
+.do {
+  padding: 5px;
+  display: flex;
+}
+
+.check {
+  width: 10px;
+  margin: 0 10px;
 }
 
 .green {
-    color:lightgreen;
+  color: lightgreen;
 }
+
 .red {
-    color:lightcoral;
+  color: lightcoral;
 }
+
 .blue {
-    color:skyblue
+  color: skyblue;
 }
-#todoList { font-size: 1.5rem;}
-.show { display: block;}
-.hide { display: none;}
+#todoList { font-size: 1.5rem; }
+.show { display: block; }
+.hide { display: none; }
