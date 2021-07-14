@@ -46,11 +46,11 @@ In order to see the live demo and use the program please run the following comma
 
 ```npm run build```
 
-```npm run serve```
+```npm start```
 
 ## Author
 
-👤 **Anvi Alex**
+👤 **Chukwuma Obasi**
 
 - GitHub: [Chukwuma Obasi](https://github.com/ccobasi)
 - Twitter: [Chukwuma Obasi](https://twitter.com/obasichux)
