@@ -1,5 +1,5 @@
 import './style.css';
-import {list} from './index';
+import {list,store} from './index';
 
 const todoList = document.querySelector('.todoList');
 
@@ -15,6 +15,8 @@ const displayList = (list) => {
       `;
 
     todoList.appendChild(lists);
+    
+
   });
 };
 
