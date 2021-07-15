@@ -38,9 +38,21 @@ i {
   display: flex;
 }
 
+.item {
+  background-color: rgb(247, 247, 247);
+}
+
 .check {
   width: 10px;
   margin: 0 10px;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.ellipsis {
+  cursor: move;
 }
 
 .green {
