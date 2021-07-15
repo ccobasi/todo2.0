@@ -1,5 +1,5 @@
 import './style.css';
-import {list,store} from './index';
+import { list } from './index.js';
 
 const todoList = document.querySelector('.todoList');
 
@@ -15,54 +15,47 @@ const displayList = (list) => {
       `;
 
     todoList.appendChild(lists);
-    
-
   });
 };
 
 displayList(list);
 
+function getDragAfterElement(todoList, y) {
+  const draggableElements = [...todoList.querySelectorAll('.item:not(.dragging)')];
+
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset, element: child };
+    }
+    return closest;
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
 const items = document.querySelectorAll('.item');
 
-items.forEach(item => {
-  item.addEventListener('dragstart', ()=>{
+items.forEach((item) => {
+  item.addEventListener('dragstart', () => {
     item.classList.add('dragging');
   });
 
-  item.addEventListener('dragend', ()=> {
+  item.addEventListener('dragend', () => {
     item.classList.remove('dragging');
   });
 });
 
-todoList.addEventListener('dragover', (e)=>{
+todoList.addEventListener('dragover', (e) => {
   e.preventDefault();
 
   const afterElement = getDragAfterElement(todoList, e.clientY);
   const item = document.querySelector('.dragging');
   console.log(afterElement);
-  if(afterElement !== null){
-    todoList.insertBefore(item,afterElement);
+  if (afterElement !== null) {
+    todoList.insertBefore(item, afterElement);
   }
-
-
 });
 
-function getDragAfterElement(todoList, y){
-
-  const draggableElements = [...todoList.querySelectorAll('.item:not(.dragging)')];
-
-  return draggableElements.reduce((closest, child) => {
-
-    const box = child.getBoundingClientRect();
-    const offset = y - box.top - box.height / 2;
-    if(offset < 0 && offset > closest.offset){
-      return {offset: offset, element: child }
-    } else {
-      return closest;
-    }
-  }, {offset: Number.NEGATIVE_INFINITY}).element;
-}
-
 export {
-    todoList, displayList, items, getDragAfterElement
-  };
+  todoList, displayList, items, getDragAfterElement,
+};

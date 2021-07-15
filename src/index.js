@@ -1,6 +1,6 @@
 import './style.css';
 
-let list = [
+const list = [
   {
     index: 0,
     description: 'Do laundry',
@@ -24,6 +24,4 @@ const store = () => {
   localStorage.setItem('list', json);
 };
 
-export {
-  list
-};
+export { list, store };

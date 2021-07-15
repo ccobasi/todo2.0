@@ -1,4 +1,4 @@
-import { store, list } from '../index';
+import { store, list } from './index.js';
 
 const updateList = (lists, check) => {
   const listInLists = list.find((t) => t.description === lists.description);
