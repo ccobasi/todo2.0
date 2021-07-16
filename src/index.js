@@ -1,4 +1,6 @@
 import './style.css';
+import {todoList, displayList, items, getDragAfterElement,} from './drag';
+
 
 const list = [
   {
@@ -19,9 +21,8 @@ const list = [
 
 ];
 
-const store = () => {
-  const json = JSON.stringify(list);
-  localStorage.setItem('list', json);
-};
+displayList(list);
 
-export { list, store };
+
+
+export { list };

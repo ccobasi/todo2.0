@@ -1,11 +1,28 @@
-import './style.css';
-import { list } from './index.js';
+
 
 const todoList = document.querySelector('.todoList');
+
+// const store = () => {
+//   const json = JSON.stringify(list);
+//   localStorage.setItem('list', json);
+// };
+
+const getTodoList = () => {
+  let list;
+  if (localStorage.getItem('list') != null) {
+    list = JSON.parse(localStorage.getItem('list'));
+  } else {
+    list = [];
+  }
+  return list;
+};
 
 const displayList = (list) => {
   list.forEach((e) => {
     const lists = document.createElement('div');
+    lists.classList.add('mini-section');
+    lists.classList.add('item');
+    lists.setAttribute("draggable", "true");
     lists.innerHTML = `
     
       <div class="mini-section item" draggable="true">
@@ -15,10 +32,10 @@ const displayList = (list) => {
       `;
 
     todoList.appendChild(lists);
+    
+    getTodoList();
   });
 };
-
-displayList(list);
 
 function getDragAfterElement(todoList, y) {
   const draggableElements = [...todoList.querySelectorAll('.item:not(.dragging)')];
@@ -56,6 +73,8 @@ todoList.addEventListener('dragover', (e) => {
   }
 });
 
+
 export {
   todoList, displayList, items, getDragAfterElement,
 };
+
