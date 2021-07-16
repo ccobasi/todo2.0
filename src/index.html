@@ -11,20 +11,38 @@
 </head>
 <body>
     
-    <div class="container">
+<div class="container">
     <div class="row">
         <div class="col mx-auto col-md-8 mt-3 text-center">
-        <div class="alert align-items-center" id="message"></div>
-        <form id="todoForm" >
-            <h3 class=""> Today's Todo</h3>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control"  id="todoInput" value="" placeholder="Add to your list...">
-                <button class="btn btn-outline-primary">ADD TODO</button>
+            <div class="alert align-items-center" id="message"></div>
+            <form id="todoForm" >
+                <h3 class=""> Today's Todo</h3>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"  id="todoInput" value="" placeholder="Add to your list...">
+                    <button class="btn btn-outline-primary">ADD TODO</button>
             </div>
-        </form>
+            </form>
+            
         
         <div class="todoList">
-        
+            <div class="mini-section item" draggable="true">
+                <span>
+                <input class="check" type="checkbox" id="task-description" name="task-description" value="1">Do Laundry
+                <i class="fas fa-ellipsis-v" style="color: gray; float: right;"></i>
+                </span>
+            </div>
+            <div class="mini-section item" draggable="true">
+                <span>
+                <input class="check" type="checkbox" id="task-description" name="task-description" value="2">Do Laundry
+                <i class="fas fa-ellipsis-v" style="color: gray; float: right;"></i>
+                </span>
+            </div>
+            <div class="mini-section item" draggable="true">
+                <span>
+                <input class="check" type="checkbox" id="task-description" name="task-description" value="3">Do Challenge
+                <i class="fas fa-ellipsis-v" style="color: gray; float: right;"></i>
+                </span>
+            </div>
         </div>
         
         </div>

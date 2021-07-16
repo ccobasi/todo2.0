@@ -1,28 +1,9 @@
 import './style.css';
-import {todoList, displayList, items, getDragAfterElement,} from './drag';
+import { addListeners, dragOver } from './drag.js';
 
+const todoList = document.querySelector('.todoList');
 
-const list = [
-  {
-    index: 0,
-    description: 'Do laundry',
-    completed: false,
-  },
-  {
-    index: 1,
-    description: 'Do laundry',
-    completed: false,
-  },
-  {
-    index: 2,
-    description: 'Do Challenge',
-    completed: false,
-  },
+const items = document.querySelectorAll('.item');
 
-];
-
-displayList(list);
-
-
-
-export { list };
+addListeners(items);
+dragOver(todoList);

@@ -1,12 +1,14 @@
-import { store, list } from './index.js';
-
-const updateList = (lists, check) => {
-  const listInLists = list.find((t) => t.description === lists.description);
-
-  listInLists.completed = check;
-
-  lists.completed = check;
-  store();
+const getTodo = (newTodo) => {
+  const d = [...newTodo.querySelectorAll('input')];
+  d.forEach((input) => {
+    input.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        input.parentNode.classList.add('desc');
+      } else {
+        input.parentNode.classList.remove('desc');
+      }
+    });
+  });
 };
 
-export default updateList;
+export default { getTodo };

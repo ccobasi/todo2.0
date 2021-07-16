@@ -1,39 +1,16 @@
+import getTodo from './complete.js';
 
+const addListeners = (elements) => {
+  elements.forEach((item) => {
+    item.addEventListener('dragstart', () => {
+      item.classList.add('dragging');
 
-const todoList = document.querySelector('.todoList');
+      item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
 
-// const store = () => {
-//   const json = JSON.stringify(list);
-//   localStorage.setItem('list', json);
-// };
-
-const getTodoList = () => {
-  let list;
-  if (localStorage.getItem('list') != null) {
-    list = JSON.parse(localStorage.getItem('list'));
-  } else {
-    list = [];
-  }
-  return list;
-};
-
-const displayList = (list) => {
-  list.forEach((e) => {
-    const lists = document.createElement('div');
-    lists.classList.add('mini-section');
-    lists.classList.add('item');
-    lists.setAttribute("draggable", "true");
-    lists.innerHTML = `
-    
-      <div class="mini-section item" draggable="true">
-      <input class="check" type="checkbox" id="todo-description" name="todo-description" value="${e.index}">${e.description}
-      <i class="fas fa-ellipsis-v" style="color: gray; float: right;"></i>
-      </div>
-      `;
-
-    todoList.appendChild(lists);
-    
-    getTodoList();
+        console.log(Array.prototype.indexOf.call(item.parentElement, item));
+      });
+    });
   });
 };
 
@@ -52,29 +29,20 @@ function getDragAfterElement(todoList, y) {
 
 const items = document.querySelectorAll('.item');
 
-items.forEach((item) => {
-  item.addEventListener('dragstart', () => {
-    item.classList.add('dragging');
+export const dragOver = (todoList) => {
+  todoList.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(todoList, e.clientY);
+    const draggable = document.querySelector('.dragging');
+    if (afterElement === undefined) {
+      todoList.appendChild(draggable);
+    } else {
+      todoList.insertBefore(draggable, afterElement);
+    }
+    getTodo(todoList);
   });
-
-  item.addEventListener('dragend', () => {
-    item.classList.remove('dragging');
-  });
-});
-
-todoList.addEventListener('dragover', (e) => {
-  e.preventDefault();
-
-  const afterElement = getDragAfterElement(todoList, e.clientY);
-  const item = document.querySelector('.dragging');
-  console.log(afterElement);
-  if (afterElement !== null) {
-    todoList.insertBefore(item, afterElement);
-  }
-});
-
-
-export {
-  todoList, displayList, items, getDragAfterElement,
 };
 
+export {
+  addListeners, items, getDragAfterElement,
+};
