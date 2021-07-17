@@ -1,45 +1,54 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/no-duplicates */
+
+import {
+  addListeners,
+  dragOver,
+  tasks,
+  editListener,
+  deleteAll,
+} from './drag.js';
+import { inputListener } from './drag.js';
 import './style.css';
-import { addListeners, dragOver } from './drag.js';
+import { getContainer } from './complete.js';
 
-const todoList = document.querySelector('.todoList');
+export const tasksList = document.querySelector('.tasksList');
+export const clearAll = document.querySelector('.clear-all');
 
-const items = document.querySelectorAll('.item');
-
-const list = [
-  {
-    index: 1,
-    description: 'brush my teeth',
-    completed: true,
-  },
-  {
-    index: 2,
-    description: 'Go to school',
-    completed: false,
-  },
-  {
-    index: 3,
-    description: 'Sleep',
-    completed: false,
-  },
-];
-
-const displayList = (list) => {
-  list.forEach((e) => {
-    const lists = document.createElement('div');
-    lists.classList.add('mini-section');
-    lists.classList.add('item');
-    lists.setAttribute('draggable', 'true');
-    lists.innerHTML = `
-      <span>
-      <input class="check" type="checkbox" id="task-description" name="task-description" value="${e.index}">${e.description}
-      <i class="fas fa-ellipsis-v" style="color: gray; float: right;"></i>
+const task = document.querySelector('.task');
+export const showTask = (tasks) => {
+  tasks.forEach((e) => {
+    const task = document.createElement('div');
+    task.classList.add('mini-section');
+    task.classList.add('item');
+    task.setAttribute('draggable', 'true');
+    if (e.completed === true) {
+      task.innerHTML = `
+      <span class='desc'>
+      <input class='check' type='checkbox' id='task-description' name='task-description' value='${e.description}' checked = true>${e.description}</input>
+      <i class="fas fa-ellipsis-v ellipsis" style="color: gray; float: right;"></i>
       </span>
       `;
-    todoList.appendChild(lists);
+    } else {
+      task.innerHTML = `
+      <span>
+      <input class='check' type='checkbox' id='task-description' name='task-description' value='${e.description}'>${e.description}</input>
+      <i class="fas fa-ellipsis-v ellipsis" style="color: gray; float: right;"></i>
+      </span>
+      `;
+    }
+
+    tasksList.appendChild(task);
   });
 };
 
-displayList(list);
+showTask(tasks);
+getContainer(tasksList);
+export const items = document.querySelectorAll('.item');
 
+inputListener(task);
+editListener();
 addListeners(items);
-dragOver(todoList);
+dragOver(tasksList);
+deleteAll();

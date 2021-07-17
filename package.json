@@ -1,24 +1,24 @@
 {
-  "name": "todo2.0",
+  "name": "webpack-boilerplate",
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open",
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "./node_modules/.bin/webpack serve"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ccobasi/todo2.0.git"
+    "url": "git+https://github.com/Anvi98/webpack-boilerplate.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ccobasi/todo2.0/issues"
+    "url": "https://github.com/Anvi98/webpack-boilerplate/issues"
   },
-  "homepage": "https://github.com/ccobasi/todo2.0#readme",
+  "homepage": "https://github.com/Anvi98/webpack-boilerplate#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^5.2.7",
