@@ -2,7 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/drag.js',
+  mode: 'development',
+  entry: './src/index.js',
   devServer: {
     contentBase: './dist',
   },

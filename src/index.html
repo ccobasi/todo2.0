@@ -12,25 +12,39 @@
 <body>
     
     <div class="container">
-    <div class="row">
-        <div class="col mx-auto col-md-8 mt-3 text-center">
-        <div class="alert align-items-center" id="message"></div>
-        <form id="todoForm" >
-            <h3 class=""> Today's Todo</h3>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control"  id="todoInput" value="" placeholder="Add to your list...">
-                <button class="btn btn-outline-primary">ADD TODO</button>
+        <div class="row">
+            <div class="col mx-auto col-md-8 mt-3 text-center">
+            <div class="alert align-items-center" id="message"></div>
+                <form id="todoForm" >
+                    <h3 class=""> Today's Todo</h3>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control"  id="todoInput" value="" placeholder="Add to your list...">
+                        <button class="btn btn-outline-primary">ADD TODO</button>
+                    </div>
+                </form>
+            
+            
+            
             </div>
-        </form>
-        
-        <div class="todoList">
-        
         </div>
-        
+   
+    </div>
+    <div class="wrapper">
+        <div class="mini-section title">   
+            <p>Today's To Do</p>
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <div class="mini-section do">
+            <input type="text" placeholder="Add to your list..." class="task">
+            <i class="fas fa-level-down-alt fa-rotate-90"></i>
+        </div>
+        <div class="tasksList">
+            
+        </div>
+        <div class="clear-all">
+            <p>Clear all completed</p>
         </div>
     </div>
-   
-</div>
 <script src="main.js"></script>
 </body>
 </html>
